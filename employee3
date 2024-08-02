@@ -1,0 +1,45 @@
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.R;
+
+public class MainActivity extends AppCompatActivity {
+    Button b1;
+    EditText e1, e2, e3, e4;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        b1 = findViewById(R.id.button);
+        e1 = findViewById(R.id.editTextText2);
+        e2 = findViewById(R.id.editTextText3);
+        e3 = findViewById(R.id.editTextText4);
+        e4 = findViewById(R.id.editTextText5);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                alert.setCancelable(true);
+                alert.setTitle("Phone Number Format");
+
+                if (e4.length() == 10) {
+                    alert.setMessage("Phone Number is valid");
+                } else {
+                    alert.setMessage("Phone Number is invalid");
+                }
+
+                alert.show();
+            }
+        });
+    }
+}
