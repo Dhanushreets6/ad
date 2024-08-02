@@ -1,0 +1,63 @@
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity implements MainActivity1 {
+    RadioButton rb1,rb2,rb3,rb4;
+    ImageView wrong,right;
+    Button btn1;
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        rb1=(RadioButton) findViewById(R.id.radioButton);
+        rb2=(RadioButton) findViewById(R.id.radioButton2);
+        rb3=(RadioButton) findViewById(R.id.radioButton3);
+        rb4=(RadioButton) findViewById(R.id.radioButton4);
+        wrong=(ImageView)findViewById(R.id.imageView);
+        right=(ImageView)findViewById(R.id.imageView2);
+        btn1=(Button)findViewById(R.id.button);
+        rb1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int cnt = 0;
+                right.setVisibility(View.INVISIBLE);
+                wrong.setVisibility(View.INVISIBLE);
+
+                if (rb1.isChecked()) {
+                    right.setVisibility(View.VISIBLE);
+                    wrong.setVisibility(View.INVISIBLE);
+                    cnt = cnt + 1;
+                }
+                if (rb2.isChecked()) {
+                    wrong.setVisibility(View.VISIBLE);
+                    right.setVisibility(View.INVISIBLE);
+                }
+
+                if (rb3.isChecked()) {
+                    wrong.setVisibility(View.VISIBLE);
+                    right.setVisibility(View.INVISIBLE);
+                }
+                if (rb4.isChecked()) {
+                    wrong.setVisibility(View.VISIBLE);
+                    right.setVisibility(View.INVISIBLE);
+                }
+                Toast.makeText(MainActivity.this, "Total: " + String.valueOf(cnt), Toast.LENGTH_SHORT).show();
+            }
+
+        });
+        };
+
+    @Override
+    public void onClick(View view) {
+     }
+}
